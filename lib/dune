@@ -1,14 +1,14 @@
 (library
  (name        ipaddr)
  (public_name ipaddr)
- (modules ipaddr)
+ (modules ipaddr ipaddr_cap_tee)
  (libraries macaddr domain-name)
  (ocamlopt_flags (-S)))
 
 (library
  (name        macaddr)
  (public_name macaddr)
- (modules macaddr)
+ (modules macaddr macaddr_cap_tee)
  (ocamlopt_flags (-S)))
 
 (library
