@@ -38,6 +38,7 @@ depends: [
   "ppx_sexp_conv" {with-test & >= "v0.9.0"}
 ]
 build: [
+  [make "add-cap-files"]
   ["dune" "subst"] {pinned}
   ["dune" "build" "-x" "riscv" "-p" "ipaddr" "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
