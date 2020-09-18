@@ -3,13 +3,13 @@
  (public_name ipaddr)
  (modules ipaddr ipaddr_cap_tee)
  (libraries macaddr domain-name)
- (ocamlopt_flags (-S)))
+ (ocamlopt_flags (-S -function-sections)))
 
 (library
  (name        macaddr)
  (public_name macaddr)
  (modules macaddr macaddr_cap_tee)
- (ocamlopt_flags (-S)))
+ (ocamlopt_flags (-S -function-sections)))
 
 (library
  (name        ipaddr_sexp)
