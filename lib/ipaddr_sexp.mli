@@ -15,32 +15,28 @@
  *
  *)
 
-(** serialisers to and from {!Ipaddr} and s-expression {!Sexplib0} format 
-  
-  To use these with ppx-based derivers, simply replace the reference to the
-  {!Ipaddr} type definition with {!Ipaddr_sexp} instead. That will import the
-  sexp-conversion functions, and the actual type definitions are simply aliases
-  to the corresponding type within {!Ipaddr}.  For example, you might do:
+(** serialisers to and from {!Ipaddr} and s-expression {!Sexplib0} format
 
-  {[
-    type t = {
-      ip: Ipaddr_sexp.t;
-      mac: Macaddr_sexp.t;
-    } [@@deriving sexp]
-  ]}
+    To use these with ppx-based derivers, simply replace the reference to the
+    {!Ipaddr} type definition with {!Ipaddr_sexp} instead. That will import the
+    sexp-conversion functions, and the actual type definitions are simply
+    aliases to the corresponding type within {!Ipaddr}. For example, you might
+    do:
 
-  The actual types of the records will be aliases to the main library types,
-  and there will be two new functions available as converters.
+    {[
+      type t = { ip : Ipaddr_sexp.t; mac : Macaddr_sexp.t } [@@deriving sexp]
+    ]}
 
-  {[
-     type t = {
-       ip: Ipaddr.t;
-       mac: Macaddr.t;
-     }
-     val sexp_of_t : t -> Sexplib0.t
-     val t_of_sexp : Sexplib0.t -> t
-  ]}
-*)
+    The actual types of the records will be aliases to the main library types,
+    and there will be two new functions available as converters.
+
+    {[
+      type t = { ip : Ipaddr.t; mac : Macaddr.t }
+
+      val sexp_of_t : t -> Sexplib0.t
+
+      val t_of_sexp : Sexplib0.t -> t
+    ]} *)
 
 type t = Ipaddr.t
 
@@ -98,4 +94,16 @@ module V6 : sig
 
     val compare : Ipaddr.V6.Prefix.t -> Ipaddr.V6.Prefix.t -> int
   end
+end
+
+module Prefix : sig
+  type addr = Ipaddr.Prefix.addr
+
+  type t = Ipaddr.Prefix.t
+
+  val sexp_of_t : Ipaddr.Prefix.t -> Sexplib0.Sexp.t
+
+  val t_of_sexp : Sexplib0.Sexp.t -> Ipaddr.Prefix.t
+
+  val compare : Ipaddr.Prefix.t -> Ipaddr.Prefix.t -> int
 end
