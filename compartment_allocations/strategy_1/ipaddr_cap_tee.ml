@@ -173,6 +173,6 @@ camlIpaddr__to_buffer:231
 camlIpaddr__network:231
 camlIpaddr__netmask:231
 camlIpaddr__pp:231
-camlIpaddr_:232
+camlIpaddr_:230
 camlIpaddr__fun:231
 *)
