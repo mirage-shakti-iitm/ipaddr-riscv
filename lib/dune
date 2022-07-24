@@ -3,13 +3,13 @@
  (public_name ipaddr)
  (modules ipaddr)
  (libraries macaddr domain-name stdlib-shims)
- (ocamlopt_flags (-default-compartment-id 1 -function-sections)))
+ (ocamlopt_flags (-default-compartment-id 16 -function-sections)))
 
 (library
  (name macaddr)
  (public_name macaddr)
  (modules macaddr)
- (ocamlopt_flags (-default-compartment-id 1 -function-sections)))
+ (ocamlopt_flags (-default-compartment-id 20 -function-sections)))
 
 (library
  (name ipaddr_sexp)
